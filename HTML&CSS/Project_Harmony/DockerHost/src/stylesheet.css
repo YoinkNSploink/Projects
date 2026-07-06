@@ -140,7 +140,7 @@
 }
 
 
-[class*="col-"]{
+/*[class*="col-"]{
     padding: 10px;
     width: 100%;
   }
@@ -160,7 +160,7 @@
 div[class*="col-"]{
     width: 100%;
 }
-}
+}*/
 
 [class*="row-"]{
     padding: 10px;

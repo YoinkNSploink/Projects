@@ -15,7 +15,7 @@ function RemoveFriend(Friend_ID){
     }).
     then(res=>res.text()).
     then(() => {
-        loadSection("index.php?controller=Friends&action=FriendList", "friendlist.js", "Content");
+        loadSection("index.php?controller=Friends&action=FriendList", "Content");
     });
 
 }
@@ -35,7 +35,7 @@ function SendRequest(){
         }).
         then(res=>res.text()).
         then(() => {
-            loadSection("index.php?controller=Friends&action=FriendList", "friendlist.js", "Content");
+            loadSection("index.php?controller=Friends&action=FriendList", "Content");
         });
 
     }
@@ -55,7 +55,7 @@ function AddFriend(incoming_id){
     }).
     then(res=>res.text()).
     then(() => {
-        loadSection("index.php?controller=Friends&action=FriendList", "friendlist.js", "Content");
+        loadSection("index.php?controller=Friends&action=FriendList", "Content");
     });
 
 }
@@ -69,18 +69,23 @@ function CreateConvo(Friend_ID){
         },
         body: 'Friend_ID=' + encodeURIComponent(Friend_ID)
     }).
-    then(res=>res.text()).
-    then(() => {
-        loadSection("index.php?controller=Conversation&action=LoadConvos", "convolist.js", "Content");
+    then(response => {
+        if(!response.ok){
+            throw new Error ("Message data receiving fucked up");
+        }
+
+        console.log("new function working");
+        return response.json();
+        
+    }).then(data => {
+        if (data.status === 'success') {
+            const convo_id = data.convo_id;
+            const other_user = data.other_user;
+            loadSection("index.php?controller=Conversation&action=LoadConvos", "Content");
+            OpenConvo(convo_id, other_user);
+            LoadMessageInput(convo_id, other_user);
+        }
     });
 
-}
-
-function LoadProfile(Friend_ID){
-    stopMessages();
-    const user_id = Friend_ID;
-    loadSection("index.php?controller=User&action=LoadProfile&UserID=" + user_id, "profile.js", "Content");
-    document.getElementById("AdditionalContent").innerHTML = "";
-    document.getElementById("Content").classList.remove("Scroll-box-6");
 }
 

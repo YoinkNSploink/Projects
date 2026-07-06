@@ -1,6 +1,5 @@
 <?php 
 
-
 require_once "db_conn.php";
 
 class Conversation{
@@ -31,7 +30,8 @@ class Conversation{
                     WHERE Conversation_participants.User_ID = ? AND Conversation_participants_SECOND.User_ID = ?";
       $result = $db->query($SQL, [$friend_id, $user_id]);
       if($result->num_rows > 0){
-        return true;
+        $row = $result->fetch_assoc();
+        return $row['Conversation_ID'];
       }else{
         return false;
       }

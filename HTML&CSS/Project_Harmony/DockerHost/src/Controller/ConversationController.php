@@ -1,5 +1,7 @@
 <?php 
 require "Model/conversation.php";
+require "Model/user.php";
+require "Model/message.php";
 
 class ConversationController{
     public function LoadConvos(){
@@ -19,11 +21,23 @@ class ConversationController{
                     $adduser = Conversation::addUserToConvo($USER_ID, $convo_id);
                     $addfriend = Conversation::addUserToConvo($FRIEND_ID, $convo_id);
                     if($adduser && $addfriend){
-                    
+                        header('Content-Type: application/json');
+                        $resp = [
+                            'status' => 'success',
+                            'other_user' => $FRIEND_ID,
+                            'convo_id' => $convo_id
+                        ];
+                        echo json_encode($resp);
                     }   
                 }
             }else{
-                $_SESSION['errorMsg'] = "Convo already exists";
+                header('Content-Type: application/json');
+                $resp = [
+                    'status' => 'success'
+                    'other_user' => $FRIEND_ID,
+                    'convo_id' => $convoExist;
+                ];
+                echo json_encode($resp);
             }
 
             

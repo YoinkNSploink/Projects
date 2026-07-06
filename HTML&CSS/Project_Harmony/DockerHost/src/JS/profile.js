@@ -24,7 +24,7 @@ function editProfile(user_id){
         }).
         then(res=>res.text()).
         then(() => {
-            loadSection("index.php?controller=User&action=LoadProfile&UserID=" + user_id, null, "Content");
+            loadSection("index.php?controller=User&action=LoadProfile&UserID=" + user_id, "Content");
         });
 
     }
@@ -43,7 +43,7 @@ function SendRequestFromProfile(friend, user_id){
         }).
         then(res=>res.text()).
         then(() => {
-            loadSection("index.php?controller=Friends&action=FriendList", "friendlist.js", "Content");
+            loadSection("index.php?controller=Friends&action=FriendList", "Content");
         });
 
     }

@@ -1,7 +1,7 @@
-function SendMessage(user_id, convo_id, other_user){
+function SendMessage(event, user_id, convo_id, other_user){
+    if(event) event.preventDefault();
+    
     const messageContent = document.getElementById("messageInput").value;
-    const messageInput = document.getElementById("messageInput");
-    messageInput.value = "";
     fetch("index.php?controller=Message&action=SendMessage", {
         method: 'POST',
         headers:{
@@ -13,12 +13,12 @@ function SendMessage(user_id, convo_id, other_user){
     }).
     then(res=>res.text()).
     then(() => {
-        
-        loadSection("index.php?controller=Message&action=LoadMessages&ConvoID=" + convo_id + "&OtherUser=" + other_user, "messages.js", "MessageBox");
+        loadSection("index.php?controller=Message&action=LoadMessages&ConvoID=" + convo_id + "&OtherUser=" + other_user, "MessageBox");
+        const messageInput = document.getElementById("messageInput");
+        messageInput.value = "";
     });
 
 
 }
-
 
 

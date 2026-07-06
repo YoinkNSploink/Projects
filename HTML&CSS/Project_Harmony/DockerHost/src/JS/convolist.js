@@ -6,7 +6,7 @@ if(document.getElementById("listofconvos")){
 }
 
 function OpenConvo(convo_id, other_user){
-    loadSection("index.php?controller=Message&action=LoadMessages&ConvoID=" + convo_id + "&OtherUser=" + other_user, "messages.js", "MessageBox");
+    loadSection("index.php?controller=Message&action=LoadMessages&ConvoID=" + convo_id + "&OtherUser=" + other_user, "MessageBox");
     messagesReload = setTimeout(OpenConvo, 1000, convo_id, other_user);
 }
 
