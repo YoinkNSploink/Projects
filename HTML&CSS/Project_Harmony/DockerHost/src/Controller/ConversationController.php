@@ -31,11 +31,12 @@ class ConversationController{
                     }   
                 }
             }else{
+                $convo_id = $convoExist;
                 header('Content-Type: application/json');
                 $resp = [
-                    'status' => 'success'
+                    'status' => 'success',
                     'other_user' => $FRIEND_ID,
-                    'convo_id' => $convoExist;
+                    'convo_id' => $convoExist
                 ];
                 echo json_encode($resp);
             }

@@ -117,10 +117,7 @@ logBT.addEventListener('click', () => {
 
 </script>
 
-<script src="../JS/profile.js"></script>
-<script src="../JS/friendlist.js"></script>    
-<script src="../JS/messages.js"></script>    
-<script src="../JS/convolist.js"></script>        
+<script src="../JS/master.js"></script>       
 
 
 

@@ -1,7 +1,8 @@
 <?php
 
 class Database{
-
+    public $conn;
+    
     public function __construct($host,$user,$pass,$db){
         try{
             $this->conn = new mysqli($host,$user,$pass,$db);
