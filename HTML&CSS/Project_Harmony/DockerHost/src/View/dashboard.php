@@ -5,8 +5,7 @@
      <?php while($convo_row = $convos->fetch_assoc()):?>
         <li class="bigbox-horizontal bg-color-Lblack box-rounded Tmargin-0p1">
             <button class="bg-color-Lblack border-trans" onclick="LoadProfile(<?php echo $convo_row['User_ID']?>)"><p class="text-color-grayer box-horizontal box-rounded oswald-font"><?php echo $convo_row['Nickname'] . "(" . $convo_row['Username'] . ")"?></p></button>
-            <button class="bg-color-yellow text-color-Lblack Lpadding-0p1 Rpadding-0p1 stick-to-right box-rounded oswald-font" onclick="loadSection('index.php?controller=Conversation&action=LoadConvos', 'Content'); OpenConvo(<?php echo $convo_row['Conversation_ID']?>, <?php echo $convo_row['User_ID']?>); 
-                             LoadMessageInput(<?php echo $convo_row['Conversation_ID']?>, <?php echo $convo_row['User_ID']?>);">Open</button>
+            <button class="btn btn-primary text-color-Lblack Lpadding-0p1 Rpadding-0p1 stick-to-right box-rounded oswald-font" onclick=" OpenConvo(<?php echo $convo_row['Conversation_ID']?>, <?php echo $convo_row['User_ID']?>, 'Content'); ">Open</button>
         </li>
      <?php endwhile;?>    
     <?php endif;?>    
@@ -17,11 +16,11 @@
     <h2 class="bg-color-Lblack text-color-yellow box-horizontal box-rounded oswald-font">Friends</h2>
     <?php if($friends->num_rows > 0):?>
      <?php while($friend = $friends->fetch_assoc()):?>
-        <li class="container-fluid d-flex bg-color-Lblack rounded p-2">
+        <li class="container-fluid d-flex bg-color-Lblack rounded p-2 mb-2">
             <button class="bg-color-Lblack btn d-flex align-items-center justify-content-center" onclick="LoadProfile(<?php echo $friend['ID']?>)"><p class="text-color-grayer oswald-font m-0"><?php echo $friend['Nickname'] . "(" . $friend['Username'] . ")"?></p></button>
             <div class="d-flex stick-to-right">
-                <button class="bg-color-yellow text-color-Lblack Lpadding-0p1 Rpadding-0p1 box-rounded oswald-font" onclick="RemoveFriend(<?php echo $friend['ID']?>)">Remove</button>
-                <button class="bg-color-yellow text-color-Lblack Lpadding-0p1 Rpadding-0p1 box-rounded oswald-font ms-2" onclick="CreateConvo(<?php echo $friend['ID']?>)">Chat</button>
+                <button class="btn btn-primary text-color-Lblack oswald-font" onclick="RemoveFriend(<?php echo $friend['ID']?>)">Remove</button>
+                <button class="btn btn-primary text-color-Lblack oswald-font ms-2" onclick="CreateConvo(<?php echo $friend['ID']?>)">Chat</button>
             </div>
             
         </li>

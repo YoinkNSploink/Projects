@@ -10,6 +10,12 @@ class ConversationController{
         require "View/convolist.php";
     }
 
+    public function LoadSidebar(){
+        $side = Conversation::getUserConvos($_SESSION['user_id']);
+
+        require "View/sidebar.php";
+    }
+
     public function CreateConvo(){
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $FRIEND_ID = $_POST['Friend_ID'];

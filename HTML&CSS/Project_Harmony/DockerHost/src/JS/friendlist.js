@@ -82,8 +82,7 @@ function CreateConvo(Friend_ID){
             const convo_id = data.convo_id;
             const other_user = data.other_user;
             loadSection("index.php?controller=Conversation&action=LoadConvos", "Content");
-            OpenConvo(convo_id, other_user);
-            LoadMessageInput(convo_id, other_user);
+            OpenConvo(convo_id, other_user, "Content");
         }
     });
 

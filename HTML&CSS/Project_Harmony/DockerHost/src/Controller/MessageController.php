@@ -3,6 +3,11 @@ require "Model/message.php";
 require "Model/user.php";
 
 class MessageController{
+
+    public function LoadMessageContainer(){
+        require "View/messagecontainer.php";
+    }
+
     public function LoadMessages(){
         if($_SERVER['REQUEST_METHOD'] === 'GET'){
             $CONVO_ID = $_GET['ConvoID'];

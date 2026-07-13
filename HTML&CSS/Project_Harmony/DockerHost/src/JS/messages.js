@@ -13,12 +13,20 @@ function SendMessage(event, user_id, convo_id, other_user){
     }).
     then(res=>res.text()).
     then(() => {
-        loadSection("index.php?controller=Message&action=LoadMessages&ConvoID=" + convo_id + "&OtherUser=" + other_user, "MessageBox");
+        loadSection("index.php?controller=Message&action=LoadMessages&ConvoID=" + convo_id + "&OtherUser=" + other_user, "MessageContainer");
+        MessageBoxScrollDown("MessageContainer");
         const messageInput = document.getElementById("messageInput");
         messageInput.value = "";
     });
 
 
+}
+
+function MessageBoxScrollDown(container){
+    const messageBoxContainer = document.getElementById(container);
+
+    messageBoxContainer.scrollTop = messageBoxContainer.scrollHeight;
+    console.log("Scrolled to bottom! new");
 }
 
 

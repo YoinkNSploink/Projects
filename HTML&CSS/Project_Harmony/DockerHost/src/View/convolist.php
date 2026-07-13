@@ -9,8 +9,7 @@
 
         <li class="bigbox-horizontal bg-color-Lblack box-rounded Tmargin-0p1 border-trans">
             <button class="bg-color-Lblack border-trans" onclick="LoadProfile(<?php echo $convo_row['User_ID']?>)"><h3 class="text-color-grayer box-horizontal box-rounded oswald-font border-trans"><?php echo $convo_row['Nickname'] . "(" . $convo_row['Username'] . ")"?></h3></button>
-            <button class="bg-color-yellow text-color-Lblack Lpadding-0p1 Rpadding-0p1 stick-to-right box-rounded oswald-font border-trans" onclick="stopMessages(); OpenConvo(<?php echo $convo_row['Conversation_ID']?>, <?php echo $convo_row['User_ID']?>); 
-                             LoadMessageInput(<?php echo $convo_row['Conversation_ID']?>, <?php echo $convo_row['User_ID']?>);">Open</button>
+            <button class="bg-color-yellow text-color-Lblack Lpadding-0p1 Rpadding-0p1 stick-to-right box-rounded oswald-font border-trans" onclick="stopMessages(); OpenConvo(<?php echo $convo_row['Conversation_ID']?>, <?php echo $convo_row['User_ID']?>, 'Content'); ">Open</button>
         </li>
         
 
@@ -24,9 +23,6 @@
 <?php endif;?>  
 </div>
 
-<div id="MessageBox" class="col-6 Scroll-box-5p5 border-trans">
-
-</div>
 
 </div>
 

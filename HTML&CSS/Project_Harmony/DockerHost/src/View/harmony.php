@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="stylesheet.css">
     <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="stylesheet.css">
     <title>Harmony</title>
 </head>
 <body class="full-height bg-color-black border-trans">
@@ -20,22 +20,25 @@
             <img src="HarmonyLogoClear.png" height="35px">
             <img class="Lmargin-0p1" src="HarmonyText.png" height="20px">
         </button>
-        <button onclick="stopMessages()" class="bg-color-yellow oswald-font btn btn-primary text-dark ms-3" type="button" id="friends">Friends</button>
-        <button onclick="stopMessages()" class="bg-color-yellow oswald-font btn btn-primary text-dark ms-3" type="button" id="conversations">Conversations</button>
+        <button onclick="stopMessages()" class="oswald-font btn btn-primary text-dark ms-3" type="button" id="friends">Friends</button>
+        <button onclick="stopMessages()" class="oswald-font btn btn-primary text-dark ms-3" type="button" id="conversations">Conversations</button>
     </div>
     <div class="col-4 d-flex justify-content-end">
-     <button class="bg-color-yellow oswald-font btn btn-primary" type="button" id="logoutbutt">Logout</button>
-     <button class="bg-color-yellow oswald-font btn btn-primary ms-3" onclick="stopMessages()" type="button" id="profile">
+     <button class="btn-primary oswald-font btn btn-primary" type="button" id="logoutbutt">Logout</button>
+     <button class="btn-primary oswald-font btn btn-primary ms-3" onclick="stopMessages()" type="button" id="profile">
      <span class="text-color-black"><?php echo $_SESSION['nickname']?></span>
      </button>
     </div>
  </div>
 
- <div>
+ <div id="Main" class="d-flex">
 
 
+    <div id="Sidebar" class="col-1 d-flex flex-column">
 
-    <div id="Content" class="">
+    </div>   
+
+    <div id="Content" class="container-fluid col">
         <?php require "View/dashboard.php"; ?>
     </div>
 
@@ -67,7 +70,7 @@ var messagesReload = null;
 function loadSection(neededURL, elementID){
     console.log("Reloaded");
 
-    fetch(neededURL)
+    return fetch(neededURL)
     .then(res => res.text())
     .then(html =>{
         if(elementID != null){
@@ -114,10 +117,15 @@ logBT.addEventListener('click', () => {
     window.location.href = "index.php?controller=User&action=Logout";
 });
 
+loadSection("index.php?controller=Conversation&action=LoadSidebar", "Sidebar");
+
 
 </script>
 
-<script src="../JS/master.js"></script>       
+<script src="../JS/profile.js"></script>       
+<script src="../JS/convolist.js"></script>  
+<script src="../JS/friendlist.js"></script>  
+<script src="../JS/messages.js"></script>  
 
 
 
