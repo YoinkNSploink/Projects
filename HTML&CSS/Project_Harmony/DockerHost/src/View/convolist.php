@@ -1,7 +1,7 @@
 <h2 class="bg-color-Lblack text-color-yellow box-horizontal box-rounded Lmargin-0p1 Bmargin-0p1 oswald-font">CONVERSATIONS</h2> 
 <div class="bigbox-horizontal border-trans">
  
-<div class="Scroll-box-5p5 col-4" style="flex-direction: column; justify-content: flex-start">
+<div class="Scroll-box-5p5 col-2" style="flex-direction: column; justify-content: flex-start">
 <ul id="listofconvos" class="bigbox-horizontal border-trans">
 
 <?php if($convo->num_rows > 0):?>
@@ -23,6 +23,17 @@
 <?php endif;?>  
 </div>
 
+<div id="DefaultContainer" class="d-flex flex-column col">
+
+    <div id="MessageContainer" class="d-flex flex-column-reverse overflow-auto border p-2" style="height: 90vh;">
+
+    </div>
+
+    <div id="MessageInput" class="Bpadding-0p25 box-horizontal stick-to-right null-padding box-rounded">
+
+    </div>    
+
+</div>
 
 </div>
 

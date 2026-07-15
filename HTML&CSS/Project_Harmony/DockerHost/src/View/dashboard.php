@@ -5,7 +5,7 @@
      <?php while($convo_row = $convos->fetch_assoc()):?>
         <li class="bigbox-horizontal bg-color-Lblack box-rounded Tmargin-0p1">
             <button class="bg-color-Lblack border-trans" onclick="LoadProfile(<?php echo $convo_row['User_ID']?>)"><p class="text-color-grayer box-horizontal box-rounded oswald-font"><?php echo $convo_row['Nickname'] . "(" . $convo_row['Username'] . ")"?></p></button>
-            <button class="btn btn-primary text-color-Lblack Lpadding-0p1 Rpadding-0p1 stick-to-right box-rounded oswald-font" onclick=" OpenConvo(<?php echo $convo_row['Conversation_ID']?>, <?php echo $convo_row['User_ID']?>, 'Content'); ">Open</button>
+            <button class="btn btn-primary text-color-Lblack Lpadding-0p1 Rpadding-0p1 stick-to-right box-rounded oswald-font" onclick="OpenConvo(<?php echo $convo_row['Conversation_ID']?>, <?php echo $convo_row['User_ID']?>, 'Content'); ">Open</button>
         </li>
      <?php endwhile;?>    
     <?php endif;?>    

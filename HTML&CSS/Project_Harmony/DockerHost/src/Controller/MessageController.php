@@ -15,7 +15,7 @@ class MessageController{
             $messages = Message::getMessages($CONVO_ID);
             $other_user = User::getUser($OTHER_USER)->fetch_assoc();
             if($messages){
-                $ids = $messages->fetch_assoc();
+                
                 require "View/messages.php";
             }else{
                 echo "Error loading messages";

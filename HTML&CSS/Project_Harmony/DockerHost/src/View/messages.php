@@ -13,8 +13,7 @@
 
         
     <?php endwhile;?>    
-    <input id="convo_id" type="hidden" value="<?php echo $ids['Conversation_ID']?>">
-    <input id="other_user_id" type="hidden" value="<?php echo $other_user['ID']?>">
+    
 
 <?php endif;?>    
 

@@ -10,7 +10,7 @@ class Message{
         $SQL = "SELECT Messages.*, Users.Username, Users.Nickname FROM Messages 
                 JOIN Users 
                 ON Messages.Sender_ID = Users.ID
-                WHERE Messages.Conversation_ID = ? ORDER BY ID ASC";
+                WHERE Messages.Conversation_ID = ? ORDER BY ID DESC";
         $result = $db->query($SQL, [$convo_id]);
         return $result;
     }

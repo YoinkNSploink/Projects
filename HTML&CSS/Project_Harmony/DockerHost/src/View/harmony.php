@@ -34,9 +34,7 @@
  <div id="Main" class="d-flex">
 
 
-    <div id="Sidebar" class="col-1 d-flex flex-column">
-
-    </div>   
+    
 
     <div id="Content" class="container-fluid col">
         <?php require "View/dashboard.php"; ?>
@@ -117,7 +115,7 @@ logBT.addEventListener('click', () => {
     window.location.href = "index.php?controller=User&action=Logout";
 });
 
-loadSection("index.php?controller=Conversation&action=LoadSidebar", "Sidebar");
+
 
 
 </script>
