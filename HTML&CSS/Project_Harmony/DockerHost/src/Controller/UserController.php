@@ -67,10 +67,12 @@ class UserController{
 
             $user = User::getUserDetails($USER_ID);
             $users_friends = Friends::getFriends($USER_ID);
+            $friends = Friends::getFriends($_SESSION['user_id']);
 
             if($user->num_rows === 1){
                 $user_exist = true;
                 $user_details = $user->fetch_assoc();
+                $friendlist = $friends->fetch_assoc();
                 require "View/profile.php";
             }else{
                 $user_exist = false;

@@ -10,6 +10,11 @@ services:
     depends_on:
       - php
     restart: unless-stopped
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /var/www/html
 
   php:
     image: bitnami/php-fpm:latest

@@ -14,14 +14,14 @@
     
 <main>
 
- <div class="container-fluid d-flex vh-10">
+ <div class="container-fluid d-flex vh-10 bg-color-Lblack rounded-bottom p-2">
     <div class="col-8 d-flex">
         <button onclick="stopMessages()" class="btn btn-link" type="button" id="dashboard">
             <img src="HarmonyLogoClear.png" height="35px">
             <img class="Lmargin-0p1" src="HarmonyText.png" height="20px">
         </button>
-        <button onclick="stopMessages()" class="oswald-font btn btn-primary text-dark ms-3" type="button" id="friends">Friends</button>
-        <button onclick="stopMessages()" class="oswald-font btn btn-primary text-dark ms-3" type="button" id="conversations">Conversations</button>
+        <button onclick="stopMessages()" class="oswald-font btn btn-primary text-color-Lblack ms-3" type="button" id="friends">Friends</button>
+        <button onclick="stopMessages()" class="oswald-font btn btn-primary text-color-Lblack ms-3" type="button" id="conversations">Conversations</button>
     </div>
     <div class="col-4 d-flex justify-content-end">
      <button class="btn-primary oswald-font btn btn-primary" type="button" id="logoutbutt">Logout</button>

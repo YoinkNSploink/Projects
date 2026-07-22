@@ -88,3 +88,12 @@ function CreateConvo(Friend_ID){
 
 }
 
+function LoadProfile(Friend_ID){
+    stopMessages();
+    const user_id = Friend_ID;
+    loadSection("index.php?controller=User&action=LoadProfile&UserID=" + user_id, "Content");
+    document.getElementById("AdditionalContent").innerHTML = "";
+    document.getElementById("Content").classList.remove("Scroll-box-6");
+}
+
+
