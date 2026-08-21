@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Stranka s tabulkou</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+<style>
+
+
+
+div{
+    font-size: 50px;
+}
+
+.ResetButton{
+    width: 200px;
+    height: 75px;
+    font-size: 50px;
+    visibility: hidden;
+}
+
+.unhide{
+    visibility: visible;
+}
+
+</style>
+
+</head>
+
+<body>
+<div>Score: <div id="myScore"></div></div>    
+
+<canvas id="canvas"></canvas>
+<div id="FinalScore"></div>
+<input type="button" value="Reset?" onclick="reset();" class="ResetButton" id="ResetButton">
+
+
+<script>
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+canvas.style.background = "black";
+canvas.width = 1600
+canvas.height = 900
+
+let radius = 100;
+
+let setTime = 2000;
+
+let x_pos = 0;
+let y_pos = 0;
+
+let score = 0;
+
+let x_mos = 0;
+let y_mos = 0;
+
+
+function drawTarget(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    x_pos = Math.floor(Math.random() * 1600); 
+    y_pos = Math.floor(Math.random() * 900);
+
+    ctx.beginPath();
+    ctx.arc(x_pos, y_pos, radius, 0, Math.PI * 2);
+    ctx.fillStyle = "red";
+    ctx.fill();
+}
+
+function updateScore(){
+    document.getElementById("myScore").innerHTML = score;
+}
+
+function check(x_mos, y_mos, x_pos, y_pos, radius){
+    dx = x_mos - x_pos;
+    dy = y_mos - y_pos;
+    distSqr = dx * dx + dy * dy;
+    
+    if(distSqr <= radius*radius){
+        return true
+    }else{return false;}
+
+}
+
+function end(){
+    console.log("GAME OVER");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    document.getElementById("FinalScore").innerHTML = "Final score: " + score;
+    var resbut =  document.getElementById("ResetButton");
+    resbut.classList.add("unhide");
+    score = 0;
+};
+
+function reset(){
+    document.getElementById("FinalScore").innerHTML = "";
+    var resbut =  document.getElementById("ResetButton");
+    resbut.classList.remove("unhide");
+    radius = 100;
+    setTime = 2000;
+    drawTarget();
+    updateScore();
+    timeHandle = setTimeout(end, setTime);
+}
+
+
+function MousePos(canvas, event){
+    let screen = canvas.getBoundingClientRect();
+    x_mos = event.clientX - screen.left;
+    y_mos = event.clientY - screen.top;
+    console.log(x_mos, y_mos);
+
+}
+
+canvas.addEventListener("click", function(mouseEv) {
+    MousePos(canvas, mouseEv);
+    let hit = check(x_mos, y_mos, x_pos, y_pos, radius);
+    if(hit === true){
+        score++;
+        if(radius > 20){
+            radius -= 20;
+        }
+        if(setTime > 1000){
+            setTime -= 50;
+        }
+        drawTarget();
+        updateScore();
+        clearTimeout(timeHandle);
+        timeHandle = setTimeout(end, setTime);
+    }
+});
+
+var timeHandle = setTimeout(end, setTime);
+
+drawTarget();
+updateScore();
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Stranka s tabulkou</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+<style>
+
+canvas{
+    background-color: blue;
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+<script>
+
+let windowX = window.innerWidth;
+let windowY = window.innerHeight;
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = 1600;
+canvas.height = 900;
+
+x_pos = 50;
+y_pos = 50;
+
+Xacc = 5;
+Yacc = 8;
+
+x_pos2 = 1600 - 50;
+y_pos2 = 900 - 50;
+
+Xacc2 = 8;
+Yacc2 = 5;
+
+function draw1(){
+
+    ctx.beginPath();
+    ctx.arc(x_pos, y_pos, 40, 0, Math.PI * 2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+
+    x_pos += Xacc;
+    y_pos += Yacc;
+
+    if(x_pos > canvas.width - 40 || x_pos < 40) {Xacc = -Xacc;}
+    if(y_pos > canvas.height - 40 || y_pos < 40) {Yacc = -Yacc;}
+
+}
+
+function draw2(){
+
+    ctx.beginPath();
+    ctx.arc(x_pos2, y_pos2, 40, 0, Math.PI * 2);
+    ctx.fillStyle = "red";
+    ctx.fill();
+
+    x_pos2 += Xacc2;
+    y_pos2 += Yacc2;
+
+    if(x_pos2 > canvas.width - 40 || x_pos2 < 40) {Xacc2 = -Xacc2;}
+    if(y_pos2 > canvas.height - 40 || y_pos2 < 40) {Yacc2 = -Yacc2;}
+
+}
+
+function collision(){
+    if(x_pos > x_pos2 && x_pos < (x_pos2 + (40+40)) && ((y_pos < (y_pos2+40) && y_pos > (y_pos2-40)))){Xacc = -Xacc;}
+    if(y_pos > y_pos2 && y_pos < (y_pos2 + (40+40)) && ((x_pos < (x_pos2+40) && x_pos > (x_pos2-40)))){Yacc = -Yacc;}
+    if(x_pos < x_pos2 && x_pos > (x_pos2 - (40+40)) && ((y_pos < (y_pos2+40) && y_pos > (y_pos2-40)))){Xacc = -Xacc;}
+    if(y_pos < y_pos2 && y_pos > (y_pos2 - (40+40)) && ((x_pos < (x_pos2+40) && x_pos > (x_pos2-40)))){Yacc = -Yacc;}
+
+    if(x_pos2 > x_pos && x_pos2 < (x_pos + (40+40)) && ((y_pos2 < (y_pos+40) && y_pos2 > (y_pos-40)))){Xacc2 = -Xacc2;}
+    if(y_pos2 > y_pos && y_pos2 < (y_pos + (40+40)) && ((x_pos2 < (x_pos+40) && x_pos2 > (x_pos-40)))){Yacc2 = -Yacc2;}
+    if(x_pos2 < x_pos && x_pos2 > (x_pos - (40+40)) && ((y_pos2 < (y_pos+40) && y_pos2 > (y_pos-40)))){Xacc2 = -Xacc2;}
+    if(y_pos2 < y_pos && y_pos2 > (y_pos - (40+40)) && ((x_pos2 < (x_pos+40) && x_pos2 > (x_pos-40)))){Yacc2 = -Yacc2;}
+
+    
+
+}
+
+function drawall(){
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+    draw1();
+    draw2();
+    collision();
+    requestAnimationFrame(drawall);
+};
+
+drawall();
+
+
+
+</script>
+
+
+</body>
+</html>
