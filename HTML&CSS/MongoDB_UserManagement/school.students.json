@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "6a8862f1f9a2833d245578b0"
+  },
+  "name": "Spongebob",
+  "age": 40,
+  "gpa": 3.2,
+  "fullTime": false
+},
+{
+  "_id": {
+    "$oid": "6a88638cf9a2833d245578b1"
+  },
+  "name": "Patrick",
+  "age": 38,
+  "gpa": 1.5,
+  "fullTime": false
+},
+{
+  "_id": {
+    "$oid": "6a88638cf9a2833d245578b2"
+  },
+  "name": "Sandy",
+  "age": 27,
+  "gpa": 5,
+  "fullTime": false
+},
+{
+  "_id": {
+    "$oid": "6a88638cf9a2833d245578b3"
+  },
+  "name": "Gary",
+  "age": 18,
+  "gpa": 2.5,
+  "fullTime": true
+},
+{
+  "_id": {
+    "$oid": "6a88682cf9a2833d245578b5"
+  },
+  "name": "Lary",
+  "age": 32,
+  "gpa": 3.2,
+  "transfer": false,
+  "registerDate": {
+    "$date": "2026-08-31T22:00:00.000Z"
+  },
+  "graduation": false,
+  "courses": [
+    "Maths",
+    "History",
+    "Economics"
+  ],
+  "address": {
+    "street": "123 Wywb St.",
+    "city": "Prague",
+    "zip": 12000
+  },
+  "fullTime": true
+}]
