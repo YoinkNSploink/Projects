@@ -4,7 +4,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./src:/var/www/html
+      - ./src:/app
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - php
@@ -15,22 +15,35 @@ services:
           path: ./src
           target: /var/www/html
 
+  mariadb:
+    image: mariadb:latest
+    env_file:
+      - .env
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./HarmonyDB.sql:/docker-entrypoint-initdb.d/HarmonyDB.sql:ro,z
+      - db_data:/var/lib/mysql
+
   php:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     image: bitnami/php-fpm:latest
+    env_file:
+      - .env
     volumes:
-      - ./src:/var/www/html
+      - ./src:/app
     environment:
-      - DB_HOST=host.docker.internal
-      - DB_USER=root
-      - DB_PASS=root
-      - DB_NAME=vladyslavshusharin
+      PHP_FPM_CLEARN_ENV: "no"
     restart: unless-stopped
+    depends_on:
+      - mariadb
 
   nodeapp:
     build: .
     container_name: my_node_js
+    ports:
+      - "3000:3000"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
@@ -41,5 +54,8 @@ services:
       watch:
         - action: rebuild
           path: package.json
+
+volumes:
+  db_data:
 
 
